@@ -1,0 +1,43 @@
+package com.mx.Empleado;
+
+public class Implementacion implements IMetodos{
+	//para implementar una interfaz se ocupa la palabra reservad "implements"
+
+	@Override
+	public void create(int indice, Empleado empleado) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void read() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void update(int indice, Empleado empleado) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void delete(int indice) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public Empleado buscar(int indice) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+}
+
+	
+	
+	
+	
+
+

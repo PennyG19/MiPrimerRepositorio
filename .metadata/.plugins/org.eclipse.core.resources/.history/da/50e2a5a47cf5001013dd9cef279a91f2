@@ -1,0 +1,236 @@
+package com.mx.Alumno;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+public class Principal {
+
+    public static void main(String[] args) {
+
+        // INSTANCIAR LOS OBJETOS
+
+        Alumno al1 = new Alumno("Juan","Pérez","López",20,"A001");
+        Alumno al2 = new Alumno("María","Gómez","Hernández",22,"A002");
+        Alumno al3 = new Alumno("Luis","Ramírez","Torres",19,"A003");
+        Alumno al4 = new Alumno("Ana","Martínez","Cruz",21,"A004");
+        Alumno al5 = new Alumno("Carlos","Sánchez","Vega",23,"A005");
+
+        // OBJETO AUXILIAR
+        Alumno aluAux = null;
+
+        // DECLARACIÓN DE LA LISTA
+        List<Alumno> lista = new ArrayList<Alumno>();
+
+        // AGREGAR OBJETOS A LA LISTA
+        lista.add(al1);
+        lista.add(al2);
+        lista.add(al3);
+        lista.add(al4);
+        lista.add(al5);
+
+		/*
+		 * // MOSTRAR CONTENIDO DE LA LISTA System.out.println(lista);
+		 * 
+		 * // BUSCAR UN ELEMENTO DE LA LISTA aluAux = lista.get(1);
+		 * System.out.println("Elemento encontrado: " + aluAux);
+		 * 
+		 * // EDITAR UN ELEMENTO DE LA LISTA aluAux = lista.get(2); aluAux.setEdad(25);
+		 * aluAux.setNombre("Luis Alberto"); System.out.println("Elemento modificado: "
+		 * + aluAux);
+		 * 
+		 * // ELIMINAR UN ELEMENTO DE LA LISTA lista.remove(3);
+		 * System.out.println("Lista actualizada\n" + lista);
+		 * 
+		 * // CONTAR ELEMENTOS System.out.println("Existen " + lista.size() +
+		 * " alumnos en la lista");
+		 * 
+		 * // ELIMINAR TODOS LOS ELEMENTOS lista.clear();
+		 * 
+		 * // VALIDAR SI LA LISTA ESTÁ VACÍA if (lista.isEmpty()) {
+		 * System.out.println(lista); }
+		 */
+        Scanner scan = null;
+        int menuPrincipal = 0, menuEditar = 0, indice = 0;
+        int edad;
+        String nombre, apellidoP, apellidoM, matricula;
+
+        do {
+            System.out.println("\n--- MENU ALUMNOS ---");
+            System.out.println("1.- AGREGAR");
+            System.out.println("2.- MOSTRAR LISTA");
+            System.out.println("3.- EDITAR");
+            System.out.println("4.- BUSCAR");
+            System.out.println("5.- ELIMINAR");
+            System.out.println("6.- CONTAR");
+            System.out.println("7.- SALIR");
+            System.out.println("ELIGE UNA OPCION");
+
+            scan = new Scanner(System.in);
+            menuPrincipal = scan.nextInt();
+
+            switch (menuPrincipal) {
+
+            // ================= AGREGAR =================
+            case 1:
+                scan = new Scanner(System.in);
+                System.out.println("Ingresa la matricula");
+                matricula = scan.nextLine();
+
+                // VALIDAR SI YA EXISTE
+                boolean existe = false;
+                for (Alumno a : lista) {
+                    if (a.getMatricula().equalsIgnoreCase(matricula)) {
+                        existe = true;
+                        break;
+                    }
+                }
+
+                if (existe) {
+                    System.out.println("❌ El alumno ya existe, no se puede repetir");
+                    break;
+                }
+
+                System.out.println("Ingresa nombre");
+                nombre = scan.nextLine();
+
+                System.out.println("Ingresa apellido paterno");
+                apellidoP = scan.nextLine();
+
+                System.out.println("Ingresa apellido materno");
+                apellidoM = scan.nextLine();
+
+                System.out.println("Ingresa edad");
+                edad = scan.nextInt();
+
+                aluAux = new Alumno(nombre, apellidoP, apellidoM, edad, matricula);
+                lista.add(aluAux);
+
+                System.out.println("✅ Alumno agregado correctamente");
+                break;
+
+            // ================= MOSTRAR =================
+            case 2:
+                System.out.println("Lista de alumnos:");
+                System.out.println(lista);
+                break;
+
+            // ================= EDITAR =================
+            case 3:
+                System.out.println("Ingresa el indice a editar");
+                scan = new Scanner(System.in);
+                indice = scan.nextInt();
+
+                if (indice < 0 || indice >= lista.size()) {
+                    System.out.println("❌ Indice fuera de rango");
+                    break;
+                }
+
+                aluAux = lista.get(indice);
+
+                do {
+                    System.out.println("\n--- EDITAR ALUMNO ---");
+                    System.out.println("1.- Nombre");
+                    System.out.println("2.- Apellido Paterno");
+                    System.out.println("3.- Apellido Materno");
+                    System.out.println("4.- Edad");
+                    System.out.println("5.- Regresar");
+                    scan = new Scanner(System.in);
+                    menuEditar = scan.nextInt();
+
+                    scan = new Scanner(System.in);
+                    switch (menuEditar) {
+                    case 1:
+                        System.out.println("Nuevo nombre");
+                        nombre = scan.nextLine();
+                        aluAux.setNombre(nombre);
+                        System.out.println("✔ Nombre actualizado");
+                        break;
+
+                    case 2:
+                        System.out.println("Nuevo apellido paterno");
+                        apellidoP = scan.nextLine();
+                        aluAux.setApellidoPaterno(apellidoP);
+                        System.out.println("✔ Apellido paterno actualizado");
+                        break;
+
+                    case 3:
+                        System.out.println("Nuevo apellido materno");
+                        apellidoM = scan.nextLine();
+                        aluAux.setApellidoMaterno(apellidoM);
+                        System.out.println("✔ Apellido materno actualizado");
+                        break;
+
+                    case 4:
+                        System.out.println("Nueva edad");
+                        edad = scan.nextInt();
+                        aluAux.setEdad(edad);
+                        System.out.println("✔ Edad actualizada");
+                        break;
+
+                    case 5:
+                        System.out.println("Regresando al menu principal...");
+                        break;
+
+                    default:
+                        System.out.println("Opcion invalida");
+                    }
+
+                } while (menuEditar != 5);
+                break;
+
+            // ================= BUSCAR =================
+            case 4:
+                System.out.println("Ingresa el indice a buscar");
+                scan = new Scanner(System.in);
+                indice = scan.nextInt();
+
+                if (indice < 0 || indice >= lista.size()) {
+                    System.out.println("❌ Alumno no encontrado");
+                } else {
+                    System.out.println("Alumno encontrado:\n" + lista.get(indice));
+                }
+                break;
+
+            // ================= ELIMINAR =================
+            case 5:
+                scan = new Scanner(System.in);
+                System.out.println("Ingresa la matricula a eliminar");
+                matricula = scan.nextLine();
+
+                boolean eliminado = false;
+
+                for (int i = 0; i < lista.size(); i++) {
+                    if (lista.get(i).getMatricula().equalsIgnoreCase(matricula)) {
+                        lista.remove(i);
+                        eliminado = true;
+                        break;
+                    }
+                }
+
+                if (eliminado) {
+                    System.out.println("✅ Alumno eliminado correctamente");
+                } else {
+                    System.out.println("❌ No se puede eliminar, el alumno no existe");
+                }
+                break;
+
+            // ================= CONTAR =================
+            case 6:
+                System.out.println("Total de alumnos: " + lista.size());
+                break;
+
+            case 7:
+                System.out.println("👋 Saliendo del sistema...");
+                break;
+
+            default:
+                System.out.println("Opcion invalida");
+            }
+
+        } while (menuPrincipal != 7);
+        
+        
+    }
+    
+}

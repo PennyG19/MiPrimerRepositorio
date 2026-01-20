@@ -1,0 +1,60 @@
+package com.mx.Alumno;
+
+import com.mx.Alumno.Alumno;
+import com.mx.Alumno.Implementacion;
+
+public class PrincipalA {	
+	
+	public static void main(String args[]) {
+		
+		
+		
+		//instancia del objeto
+		
+		    Alumno alum1 = new Alumno("Juan","Pérez","López",20,"A001");
+	        Alumno alum2 = new Alumno("María","Gómez","Hernández",22,"A002");
+	        Alumno alum3 = new Alumno("Luis","Ramírez","Torres",19,"A003");
+	        Alumno alum4 = new Alumno("Ana","Martínez","Cruz",21,"A004");
+	        Alumno alum5 = new Alumno("Carlos","Sánchez","Vega",23,"A005");
+        
+		//objeto auxiliar
+		Alumno alumAux = null; 
+		
+		//Instanciar la clase de implementacion para poder ocupar todos los metodos declarados
+		Implementacion imp = new Implementacion(); 
+		
+		//almacenar todos los objetos en la lista
+		
+		imp.create(1, alum1);
+		imp.create(2, alum2);
+		imp.create(3, alum3);
+		imp.create(4, alum4);
+		imp.create(5, alum5);
+		
+		
+		//mostrar
+		imp.read();
+		
+		//buscar 
+		alumAux =imp.buscar(1);
+		System.out.println("Elemento encontrado:" + alumAux);
+		
+		//editar 
+		alumAux =imp.buscar(1);
+		alumAux.setNombre("Julian");
+		alumAux.setMatricula("A005");
+		imp.update(1, alumAux);
+		System.out.println("Elemento editado" + alumAux);
+		
+		//eliminar 
+		imp.delete(2);
+		imp.read();
+		
+		//contar
+		imp.contar();		
+		
+		
+	} 
+
+}
+

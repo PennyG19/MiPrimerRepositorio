@@ -1,0 +1,59 @@
+package com.mx.Alumno;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Principal {
+
+    public static void main(String[] args) {
+
+        // INSTANCIAR LOS OBJETOS
+
+        Alumno al1 = new Alumno("Juan","Pérez","López",20,"A001");
+        Alumno al2 = new Alumno("María","Gómez","Hernández",22,"A002");
+        Alumno al3 = new Alumno("Luis","Ramírez","Torres",19,"A003");
+        Alumno al4 = new Alumno("Ana","Martínez","Cruz",21,"A004");
+        Alumno al5 = new Alumno("Carlos","Sánchez","Vega",23,"A005");
+
+        // OBJETO AUXILIAR
+        Alumno alAux = null;
+
+        // DECLARACIÓN DE LA LISTA
+        List<Alumno> lista = new ArrayList<Alumno>();
+
+        // AGREGAR OBJETOS A LA LISTA
+        lista.add(al1);
+        lista.add(al2);
+        lista.add(al3);
+        lista.add(al4);
+        lista.add(al5);
+
+        // MOSTRAR CONTENIDO DE LA LISTA
+        System.out.println(lista);
+
+        // BUSCAR UN ELEMENTO DE LA LISTA
+        alAux = lista.get(1);
+        System.out.println("Elemento encontrado: " + alAux);
+
+        // EDITAR UN ELEMENTO DE LA LISTA
+        alAux = lista.get(2);
+        alAux.setEdad(25);
+        alAux.setNombre("Luis Alberto");
+        System.out.println("Elemento modificado: " + alAux);
+
+        // ELIMINAR UN ELEMENTO DE LA LISTA
+        lista.remove(3);
+        System.out.println("Lista actualizada\n" + lista);
+
+        // CONTAR ELEMENTOS
+        System.out.println("Existen " + lista.size() + " alumnos en la lista");
+
+        // ELIMINAR TODOS LOS ELEMENTOS
+        lista.clear();
+
+        // VALIDAR SI LA LISTA ESTÁ VACÍA
+        if (lista.isEmpty()) {
+            System.out.println(lista);
+        }
+    }
+}

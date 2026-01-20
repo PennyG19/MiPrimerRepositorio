@@ -1,0 +1,30 @@
+package com.mx.Empleado;
+
+public class Empleado {
+	
+	private String nombre;
+	private String apellidoP;
+	private String apellidoM;
+	private Long telefono;
+	private int edad;
+	private double sueldo;
+	
+	
+	public Empleado() {
+			 
+	}
+	
+	public Empleado(String nombre, String apellidoP, String apellidoM, Long telefono, int edad, double sueldo) {
+		
+		this.nombre = nombre;
+		this.apellidoP = apellidoP;
+		this.apellidoM = apellidoM;
+		this.telefono = telefono;
+		this.edad = edad;
+		this.sueldo = sueldo;
+	}
+
+	
+	
+
+}
